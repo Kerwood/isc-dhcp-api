@@ -1,0 +1,11 @@
+version: "3"
+services:
+  dhcp-api:
+    image: test-api
+    container_name: isc-dhcp-api
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    volumes:
+      - ./dhcpd.conf:/dhcpd/dhcpd.conf
+      - ./dhcpd.leases:/dhcpd/dhcpd.leases

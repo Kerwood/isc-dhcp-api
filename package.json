@@ -1,0 +1,27 @@
+{
+  "name": "isc-dhcp-api",
+  "version": "1.0.0",
+  "description": "API that exposes lease information from ISC DHCP",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kerwood/isc-dhcp-api.git"
+  },
+  "author": "Patrick Kerwood",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kerwood/isc-dhcp-api/issues"
+  },
+  "homepage": "https://github.com/Kerwood/isc-dhcp-api#readme",
+  "dependencies": {
+    "assert-plus": "^1.0.0",
+    "cidr-matcher": "^1.0.5",
+    "express": "^4.16.4",
+    "ip-subnet-calculator": "^1.1.8",
+    "morgan": "^1.9.1"
+  }
+}
