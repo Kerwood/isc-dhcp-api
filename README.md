@@ -198,7 +198,7 @@ The subnet does not have to match a DHCP scope. it can be any subnet.
 ]
 ```
 ### Search for leases
-The search function will search in `client-hostname`, `hardware ethernet` and `set vendor-class-identifier`.
+The search function will search in `client-hostname`, `hardware ethernet` and `set vendor-class-identifier` properties.
 ```
 [GET] /leases/search/flubber
 ```
