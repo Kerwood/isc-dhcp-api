@@ -1,6 +1,8 @@
 # isc-dhcp-api
 Express API that exposes config and lease information from ISC DHCP.
 
+Note: Your global configuration **must** before your scopes. Or else the API will not pick them up.
+
 ## Docker
 ```
 docker run \
