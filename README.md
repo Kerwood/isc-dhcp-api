@@ -145,7 +145,7 @@ Get the DHCP global configuration.
   .....
 ]
 ```
-### Get all active leases for spefific IP
+### Get all active leases for specific IP
 ```
 [GET] /leases/10.1.0.31
 ```
