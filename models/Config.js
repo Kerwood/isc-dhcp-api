@@ -2,7 +2,7 @@ const assert = require('assert-plus')
 const fs = require('fs')
 
 const readConfig = () => {
-  const config = fs.readFileSync('./dhcpd.conf', 'utf-8')
+  const config = fs.readFileSync('/dhcpd/dhcpd.conf', 'utf-8')
   assert.string(config, 'config')
 
   const trimmedConfig = config
