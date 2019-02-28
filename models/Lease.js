@@ -2,7 +2,7 @@ const assert = require('assert-plus')
 const fs = require('fs')
 
 const readLeases = () => {
-  const leases = fs.readFileSync('/dhcpd/dhcpd.leases', 'utf-8')
+  const leases = fs.readFileSync('/dhcpd-leases/dhcpd.leases', 'utf-8')
   assert.string(leases, 'leases')
 
   const trimmedLeases = leases

@@ -4,13 +4,14 @@ Express API that exposes config and lease information from ISC DHCP.
 Note: Your global configuration **must** before your scopes. Or else the API will not pick them up.
 
 ## Docker
+Note the folders containing the config and leases files are mounted instead of the files themself. I've experienced that if the files is mounted directly in the container, they will not update when new data is appended to the files on the host.
 ```
 docker run \
   --name isc-dhcp-api \
   --restart unless-stopped \
   -p 3000:3000 \
-  -v /path/to/dhcpd.conf:/dhcpd/dhcpd.conf \
-  -v /path/to/dhcpd.leases:/dhcpd/dhcpd.leases \
+  -v /etc/dhcp/:/dhcpd-config/ \
+  -v /var/lib/dhcp/:/dhcpd-leases/ \
   -d kerwood/isc-dhcp-api
 ```
 Or use the included `docker-compose.yml` file.

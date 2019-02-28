@@ -7,5 +7,5 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./dhcpd.conf:/dhcpd/dhcpd.conf
-      - ./dhcpd.leases:/dhcpd/dhcpd.leases
+      - /etc/dhcp/:/dhcpd-config # isc-dhcp config directory
+      - /var/lib/dhcp/:/dhcpd-leases # isc-dhcp leases directory
