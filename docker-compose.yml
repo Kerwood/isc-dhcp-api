@@ -4,6 +4,8 @@ services:
     image: kerwood/isc-dhcp-api
     container_name: isc-dhcp-api
     restart: unless-stopped
+    environment:
+      - token=your-token-here
     ports:
       - 3000:3000
     volumes:
