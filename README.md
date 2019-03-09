@@ -10,11 +10,18 @@ docker run \
   --name isc-dhcp-api \
   --restart unless-stopped \
   -p 3000:3000 \
+  -e token="your-token-here" \
   -v /etc/dhcp/:/dhcpd-config/ \
   -v /var/lib/dhcp/:/dhcpd-leases/ \
   -d kerwood/isc-dhcp-api
 ```
 Or use the included `docker-compose.yml` file.
+
+## Authorization
+Add your token to the Authorization header of your request or remove the `token` environment variable to disable authentication.
+```
+curl -H "Authorization: your-token-here" http://localhost:3000/config
+```
 
 ## Endpoints
 ### Get config

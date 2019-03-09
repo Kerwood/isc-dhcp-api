@@ -12,6 +12,14 @@ app.get('/', (req, res) => {
   res.json({ name: 'isc-dhcp-lease-api', description: 'API that exposes lease information from ISC DHCP', version: '1.0.0' })
 })
 
+app.use((req, res, next) => {
+  if (req.headers.authorization !== process.env.token) {
+    res.status(401).json({ error: 'Not authorized' }).end()
+    return next('Unauthorized')
+  }
+  next()
+})
+
 /* ###################################################
 #                    Leases Routes                   #
 ################################################### */
