@@ -4,7 +4,7 @@ const CIDRMatcher = require('cidr-matcher')
 
 const getLeases = (req, res) => {
   Lease.getLeases()
-    .then(leases => leases.filter(x => x['binding state'] === 'active'))
+    .then(leases => leases.filter(x => x['binding-state'] === 'active'))
     .then(leases => Lease.filterOldLeases(leases))
     .then(data => res.json(data))
 }
@@ -25,7 +25,7 @@ const getLeasesByScope = (req, res) => {
   if (req.params.prefix < 1 || prefix > 32) return res.status(400).json({ success: false, msg: 'Not a valid prefix!!' })
   Lease.getLeases()
     .then(leases => leases.filter(x => matcher.contains(x.ip)))
-    .then(leases => leases.filter(x => x['binding state'] === 'active'))
+    .then(leases => leases.filter(x => x['binding-state'] === 'active'))
     .then(leases => Lease.filterOldLeases(leases))
     .then(lease => res.json(lease))
 }
@@ -36,10 +36,10 @@ const searchLeases = (req, res) => {
     .then(leases => leases
       .filter(lease =>
         regex.test(lease['client-hostname']) ||
-        regex.test(lease['hardware ethernet']) ||
-        regex.test(lease['set vendor-class-identifier'])
+        regex.test(lease['hardware-ethernet']) ||
+        regex.test(lease['set-vendor-class-identifier'])
       ))
-    .then(leases => leases.filter(x => x['binding state'] === 'active'))
+    .then(leases => leases.filter(x => x['binding-state'] === 'active'))
     .then(leases => Lease.filterOldLeases(leases))
     .then(lease => res.json(lease))
 }

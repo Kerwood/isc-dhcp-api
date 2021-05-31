@@ -9,7 +9,7 @@ const morgan = require('morgan')
 app.use(morgan('combined'))
 
 app.get('/', (req, res) => {
-  res.json({ name: 'isc-dhcp-lease-api', description: 'API that exposes lease information from ISC DHCP', version: '1.0.0' })
+  res.json({ name: 'isc-dhcp-lease-api', description: 'API that exposes lease information from ISC DHCP', version: '2.0.0' })
 })
 
 app.use((req, res, next) => {
@@ -27,9 +27,9 @@ app.use('/leases', leasesRoute)
 
 leasesRoute
   .get('/', Lease.getLeases)
-  .get(`/:ip(\\d{1,3}.\\d{1,3}.\\d{1,3}.\\d{1,3})`, Lease.getLeaseByIP)
-  .get(`/:ip(\\d{1,3}.\\d{1,3}.\\d{1,3}.\\d{1,3})/:prefix(\\d+)`, Lease.getLeasesByScope)
-  .get(`/search/:string`, Lease.searchLeases)
+  .get('/:ip(\\d{1,3}.\\d{1,3}.\\d{1,3}.\\d{1,3})', Lease.getLeaseByIP)
+  .get('/:ip(\\d{1,3}.\\d{1,3}.\\d{1,3}.\\d{1,3})/:prefix(\\d+)', Lease.getLeasesByScope)
+  .get('/search/:string', Lease.searchLeases)
 
 /* ###################################################
 #                    Config Routes                   #

@@ -13,7 +13,7 @@ const readLeases = () => {
 
 const getLeases = async () => {
   const leasesFile = readLeases()
-  let leases = []
+  const leases = []
 
   let z = -1
   for (let i = 0; i < leasesFile.length; i++) {
@@ -27,7 +27,8 @@ const getLeases = async () => {
       leases[z][regMatch[1]] = new Date(regMatch[2] + ' UTC')
     } else if ((regMatch = leasesFile[i].match(/^\s{2}([a-zA-Z0-9 -]+) ([^"].*);$/))) {
       // misc.
-      leases[z][regMatch[1]] = regMatch[2]
+      const propertyName = regMatch[1].split(' ').join('-')
+      leases[z][propertyName] = regMatch[2]
     } else if ((regMatch = leasesFile[i].match(/^\s{2}([a-zA-Z0-9 -]+) "(.*)";$/))) {
       // client-hostname, uid
       leases[z][regMatch[1]] = regMatch[2]
@@ -39,7 +40,7 @@ const getLeases = async () => {
 
 const filterOldLeases = (leases) => {
   return leases.reduce((array, lease) => {
-    const i = array.findIndex(x => x['hardware ethernet'] === lease['hardware ethernet'])
+    const i = array.findIndex(x => x['hardware-ethernet'] === lease['hardware-ethernet'])
     if (i === -1) {
       array.push(lease)
     } else if (new Date(lease.ends) > new Date(array[i].ends)) {

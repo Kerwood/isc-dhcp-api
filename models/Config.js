@@ -14,7 +14,7 @@ const readConfig = () => {
 
 const getGlobals = async () => {
   const config = readConfig()
-  let globals = {}
+  const globals = {}
   for (let i = 0; i < config.length; i++) {
     let regMatch
     // If IP scobe section startes, return the globals object
@@ -37,7 +37,7 @@ const getGlobals = async () => {
 
 const getScopes = async () => {
   const config = readConfig()
-  let subnets = []
+  const subnets = []
   let subnetSpecsStarted = false
   let z = -1
   for (let i = 0; i < config.length; i++) {
