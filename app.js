@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 })
 
 app.use((req, res, next) => {
-  if (req.headers.authorization !== process.env.token) {
+  if (process.env.token && process.env.token !== req.headers.authorization) {
     res.status(401).json({ error: 'Not authorized' }).end()
     return next('Unauthorized')
   }
