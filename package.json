@@ -4,7 +4,7 @@
   "description": "API that exposes lease information from ISC DHCP",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,5 +23,8 @@
     "express": "^4.16.4",
     "ip-subnet-calculator": "^1.1.8",
     "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
   }
 }
