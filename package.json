@@ -20,7 +20,7 @@
   "dependencies": {
     "assert-plus": "^1.0.0",
     "cidr-matcher": "^2.1.1",
-    "express": "^4.16.4",
+    "express": "^4.18.2",
     "ip-subnet-calculator": "^1.1.8",
     "morgan": "^1.9.1"
   }
